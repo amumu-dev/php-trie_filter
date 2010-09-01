@@ -12,11 +12,14 @@
   | obtain it through the world-wide-web, please send a note to          |
   | license@php.net so we can mail you a copy immediately.               |
   +----------------------------------------------------------------------+
-  | Author:                                                              |
+  | Author: liwei <liwei@anbutu.com>                                     |
   +----------------------------------------------------------------------+
 */
 
 /* $Id: header 226204 2007-01-01 19:32:10Z iliaa $ */
+
+#include <iconv.h>
+#include <datrie/trie.h>
 
 #ifndef PHP_TRIE_FILTER_H
 #define PHP_TRIE_FILTER_H
@@ -34,6 +37,7 @@ extern zend_module_entry trie_filter_module_entry;
 #include "TSRM.h"
 #endif
 
+#define ALPHA_CHARSET	"UCS-4LE"
 #define PHP_TRIE_FILTER_RES_NAME "Trie tree filter"
 
 PHP_MINIT_FUNCTION(trie_filter);
@@ -42,7 +46,6 @@ PHP_RINIT_FUNCTION(trie_filter);
 PHP_RSHUTDOWN_FUNCTION(trie_filter);
 PHP_MINFO_FUNCTION(trie_filter);
 
-PHP_FUNCTION(confirm_trie_filter_compiled);	/* For testing, remove later. */
 PHP_FUNCTION(trie_filter_load);
 PHP_FUNCTION(trie_filter_search);
 
